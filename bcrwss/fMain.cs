@@ -126,11 +126,11 @@ namespace bcrwss
                         result += "T";
                     }
                 }
-                if (r.color.ToLower() == "blue")
+                if (r.color != null && r.color.ToLower() == "blue")
                 {
                     result += "P";
                 }
-                else if (r.color.ToLower() == "red")
+                else if (r.color != null && r.color.ToLower() == "red")
                 {
                     result += "B";
                 }

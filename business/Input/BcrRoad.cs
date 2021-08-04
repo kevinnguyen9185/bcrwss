@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace business.BcrRoad
+namespace business.Input.BcrRoad
 {
     public class BigRoad
     {

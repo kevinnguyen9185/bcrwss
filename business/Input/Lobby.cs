@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace business.Lobby
+namespace business.Input.Lobby
 {
     public class Category
     {

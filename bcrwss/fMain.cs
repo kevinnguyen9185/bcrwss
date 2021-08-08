@@ -97,87 +97,6 @@ namespace bcrwss
             }
         }
 
-        private void btnGetLobbyInfo_Click(object sender, EventArgs e)
-        {
-            if(wsClient== null || !wsClient.IsRunning)
-            {
-                _url = new Uri(string.Format(urlTemplate, evoSessionId));
-                var factory = new Func<ClientWebSocket>(() => new ClientWebSocket
-                {
-                    Options =
-                {
-                    KeepAliveInterval = TimeSpan.FromSeconds(5),
-                }
-                });
-
-                wsClient = new WebsocketClient(_url, factory);
-                wsClient.Start();
-                lstLog.Items.Insert(0, "Client started");
-
-                wsClient
-                    .MessageReceived
-                    .Where(msg => msg.Text != null)
-                    .Where(msg => msg.Text.StartsWith("{"))
-                    .Subscribe(obj => { OnWebsocketReceive(obj.Text); });
-
-                tMetricPing.Start();
-                tRefreshSession.Start();
-
-                toolStripStatusMain.Text = "Fetching";
-            }
-
-            if (wsClient != null)
-            {
-                //wsClient.Send("{ 'id':'7gkhqb10bv','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'table','tables':[{ 'tableId':'leqhceumaq6qfoug'},{ 'tableId':'lv2kzclunt2qnxo5'},{ 'tableId':'ndgvwvgthfuaad3q'},{ 'tableId':'ndgvz5mlhfuaad6e'},{ 'tableId':'ndgv45bghfuaaebf'},{ 'tableId':'nmwde3fd7hvqhq43'},{ 'tableId':'nmwdzhbg7hvqh6a7'},{ 'tableId':'nxpj4wumgclak2lx'},{ 'tableId':'nxpkul2hgclallno'},{ 'tableId':'obj64qcnqfunjelj'},{ 'tableId':'ocye2ju2bsoyq6vv'},{ 'tableId':'ovu5cwp54ccmymck'},{ 'tableId':'ovu5dsly4ccmynil'},{ 'tableId':'ovu5eja74ccmyoiq'},{ 'tableId':'ovu5fbxm4ccmypmb'},{ 'tableId':'ovu5fzje4ccmyqnr'},{ 'tableId':'o4kyj7tgpwqqy4m4'},{ 'tableId':'LightningBac0001'},{ 'tableId':'ndgv76kehfuaaeec'},{ 'tableId':'ocye5hmxbsoyrcii'},{ 'tableId':'ovu5h6b3ujb4y53w'},{ 'tableId':'NoCommBac0000001'},{ 'tableId':'oytmvb9m1zysmc44'},{ 'tableId':'60i0lcfx5wkkv3sy'},{ 'tableId':'ndgvs3tqhfuaadyg'},{ 'tableId':'zixzea8nrf1675oh'},{ 'tableId':'k2oswnib7jjaaznw'},{ 'tableId':'SalPrivBac000001'},{ 'tableId':'n7ltqx5j25sr7xbe'},{ 'tableId':'ok37hvy3g7bofp4l'},{ 'tableId':'SalPrivBac000004'},{ 'tableId':'pctte34dt6bqbtps'},{ 'tableId':'SuperSicBo000001'},{ 'tableId':'DragonTiger00001'}]}],'unsubscribeTopics':[]} }");
-
-                wsClient.Send("{ 'id':'adfadsfasd','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'lobby','orientation':'landscape','category':'baccarat_sicbo','table':'leqhceumaq6qfoug'}],'unsubscribeTopics':[]} }");
-            }
-        }
-
-        private void btnTableUpdate_Click(object sender, EventArgs e)
-        {
-            if (wsClient != null)
-            {
-                var tableInputs = new List<business.Command.TableInput>();
-                tableInfos = bcrBusiness.GetBcrTableInfo();
-                foreach (var tblInfo in tableInfos)
-                {
-                    tableInputs.Add(new business.Command.TableInput
-                    {
-                        tableId = tblInfo.TableId,
-                    });
-                }
-
-                var subscribeTopics = new List<business.Command.SubscribeTopic>
-                {
-                    new business.Command.SubscribeTopic
-                    {
-                        topic = "table",
-                        tables = tableInputs
-                    }
-                };
-
-                var unsubscribeTopics = new List<object>();
-
-                var command = new business.Command.SubscribeTableInfo
-                {
-                    id = Guid.NewGuid().ToString(),
-                    type = "lobby.updateSubscriptions",
-                    args = new business.Command.Args
-                    {
-                        subscribeTopics = subscribeTopics,
-                        unsubscribeTopics = unsubscribeTopics
-                    }
-                };
-
-                //wsClient.Send("{ 'id':'7gkhqb10bv','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'table','tables':[{ 'tableId':'leqhceumaq6qfoug'},{ 'tableId':'lv2kzclunt2qnxo5'},{ 'tableId':'ndgvwvgthfuaad3q'},{ 'tableId':'ndgvz5mlhfuaad6e'},{ 'tableId':'ndgv45bghfuaaebf'},{ 'tableId':'nmwde3fd7hvqhq43'},{ 'tableId':'nmwdzhbg7hvqh6a7'},{ 'tableId':'nxpj4wumgclak2lx'},{ 'tableId':'nxpkul2hgclallno'},{ 'tableId':'obj64qcnqfunjelj'},{ 'tableId':'ocye2ju2bsoyq6vv'},{ 'tableId':'ovu5cwp54ccmymck'},{ 'tableId':'ovu5dsly4ccmynil'},{ 'tableId':'ovu5eja74ccmyoiq'},{ 'tableId':'ovu5fbxm4ccmypmb'},{ 'tableId':'ovu5fzje4ccmyqnr'},{ 'tableId':'o4kyj7tgpwqqy4m4'},{ 'tableId':'LightningBac0001'},{ 'tableId':'ndgv76kehfuaaeec'},{ 'tableId':'ocye5hmxbsoyrcii'},{ 'tableId':'ovu5h6b3ujb4y53w'},{ 'tableId':'NoCommBac0000001'},{ 'tableId':'oytmvb9m1zysmc44'},{ 'tableId':'60i0lcfx5wkkv3sy'},{ 'tableId':'ndgvs3tqhfuaadyg'},{ 'tableId':'zixzea8nrf1675oh'},{ 'tableId':'k2oswnib7jjaaznw'},{ 'tableId':'SalPrivBac000001'},{ 'tableId':'n7ltqx5j25sr7xbe'},{ 'tableId':'ok37hvy3g7bofp4l'},{ 'tableId':'SalPrivBac000004'},{ 'tableId':'pctte34dt6bqbtps'},{ 'tableId':'SuperSicBo000001'},{ 'tableId':'DragonTiger00001'}]}],'unsubscribeTopics':[]} }");
-
-                //{ "id":"7gkhqb10bv","type":"lobby.updateSubscriptions","args":{ "subscribeTopics":[{ "topic":"table","tables":[{ "tableId":"leqhceumaq6qfoug"},{ "tableId":"lv2kzclunt2qnxo5"},{ "tableId":"ndgvwvgthfuaad3q"},{ "tableId":"ndgvz5mlhfuaad6e"},{ "tableId":"ndgv45bghfuaaebf"},{ "tableId":"nmwde3fd7hvqhq43"},{ "tableId":"nmwdzhbg7hvqh6a7"},{ "tableId":"nxpj4wumgclak2lx"},{ "tableId":"nxpkul2hgclallno"},{ "tableId":"obj64qcnqfunjelj"},{ "tableId":"ocye2ju2bsoyq6vv"},{ "tableId":"ovu5cwp54ccmymck"},{ "tableId":"ovu5dsly4ccmynil"},{ "tableId":"ovu5eja74ccmyoiq"},{ "tableId":"ovu5fbxm4ccmypmb"},{ "tableId":"ovu5fzje4ccmyqnr"},{ "tableId":"o4kyj7tgpwqqy4m4"},{ "tableId":"LightningBac0001"},{ "tableId":"ndgv76kehfuaaeec"},{ "tableId":"ocye5hmxbsoyrcii"},{ "tableId":"ovu5h6b3ujb4y53w"},{ "tableId":"NoCommBac0000001"},{ "tableId":"oytmvb9m1zysmc44"},{ "tableId":"60i0lcfx5wkkv3sy"},{ "tableId":"ndgvs3tqhfuaadyg"},{ "tableId":"zixzea8nrf1675oh"},{ "tableId":"k2oswnib7jjaaznw"},{ "tableId":"SalPrivBac000001"},{ "tableId":"n7ltqx5j25sr7xbe"},{ "tableId":"ok37hvy3g7bofp4l"},{ "tableId":"SalPrivBac000004"},{ "tableId":"pctte34dt6bqbtps"},{ "tableId":"SuperSicBo000001"},{ "tableId":"DragonTiger00001"}]}],"unsubscribeTopics":null} }
-                var strCommand = JsonConvert.SerializeObject(command);
-                wsClient.Send(strCommand);
-            }
-        }
-
         private void btnShowData_Click(object sender, EventArgs e)
         {
             //bcrBusiness.CleanUpData();
@@ -346,16 +265,10 @@ namespace bcrwss
             tRefreshSession.Start();
         }
 
-        private void btnToEvo_Click(object sender, EventArgs e)
-        {
-            this.cBrowser.Load("https://qq8788viet.com/vi-VN/GamePage?Provider=EGC&GameCode=baccarat&RealMoney=True&ProviderPosition=LiveCasino");
-        }
-
         private void btnExtractSessionId_Click(object sender, EventArgs e)
         {
             evoSessionId = bHandler.GetEvoSessionId();
             this.toolStripStatusEvoSessionId.Text = evoSessionId;
-            this.btnGetLobbyInfo.Enabled = this.btnTableUpdate.Enabled = !string.IsNullOrEmpty(evoSessionId);
         }
     }
 }

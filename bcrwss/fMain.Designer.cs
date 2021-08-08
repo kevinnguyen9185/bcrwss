@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lstLog = new System.Windows.Forms.ListBox();
-            this.btnGetLobbyInfo = new System.Windows.Forms.Button();
-            this.btnTableUpdate = new System.Windows.Forms.Button();
             this.tvData = new System.Windows.Forms.TreeView();
             this.btnShowData = new System.Windows.Forms.Button();
             this.tMetricPing = new System.Windows.Forms.Timer(this.components);
@@ -41,7 +39,6 @@
             this.toolStripStatusMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusEvoSessionId = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnToEvo = new System.Windows.Forms.Button();
             this.btnExtractSessionId = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -65,28 +62,6 @@
             this.lstLog.Size = new System.Drawing.Size(743, 223);
             this.lstLog.TabIndex = 0;
             // 
-            // btnGetLobbyInfo
-            // 
-            this.btnGetLobbyInfo.Enabled = false;
-            this.btnGetLobbyInfo.Location = new System.Drawing.Point(364, 12);
-            this.btnGetLobbyInfo.Name = "btnGetLobbyInfo";
-            this.btnGetLobbyInfo.Size = new System.Drawing.Size(133, 23);
-            this.btnGetLobbyInfo.TabIndex = 1;
-            this.btnGetLobbyInfo.Text = "Get Lobby Info";
-            this.btnGetLobbyInfo.UseVisualStyleBackColor = true;
-            this.btnGetLobbyInfo.Click += new System.EventHandler(this.btnGetLobbyInfo_Click);
-            // 
-            // btnTableUpdate
-            // 
-            this.btnTableUpdate.Enabled = false;
-            this.btnTableUpdate.Location = new System.Drawing.Point(503, 12);
-            this.btnTableUpdate.Name = "btnTableUpdate";
-            this.btnTableUpdate.Size = new System.Drawing.Size(106, 23);
-            this.btnTableUpdate.TabIndex = 3;
-            this.btnTableUpdate.Text = "Update tables";
-            this.btnTableUpdate.UseVisualStyleBackColor = true;
-            this.btnTableUpdate.Click += new System.EventHandler(this.btnTableUpdate_Click);
-            // 
             // tvData
             // 
             this.tvData.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -97,7 +72,7 @@
             // 
             // btnShowData
             // 
-            this.btnShowData.Location = new System.Drawing.Point(615, 12);
+            this.btnShowData.Location = new System.Drawing.Point(251, 12);
             this.btnShowData.Name = "btnShowData";
             this.btnShowData.Size = new System.Drawing.Size(75, 23);
             this.btnShowData.TabIndex = 6;
@@ -157,21 +132,10 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // btnToEvo
-            // 
-            this.btnToEvo.Enabled = false;
-            this.btnToEvo.Location = new System.Drawing.Point(123, 12);
-            this.btnToEvo.Name = "btnToEvo";
-            this.btnToEvo.Size = new System.Drawing.Size(107, 23);
-            this.btnToEvo.TabIndex = 10;
-            this.btnToEvo.Text = "To Evo";
-            this.btnToEvo.UseVisualStyleBackColor = true;
-            this.btnToEvo.Click += new System.EventHandler(this.btnToEvo_Click);
-            // 
             // btnExtractSessionId
             // 
             this.btnExtractSessionId.Enabled = false;
-            this.btnExtractSessionId.Location = new System.Drawing.Point(236, 12);
+            this.btnExtractSessionId.Location = new System.Drawing.Point(123, 12);
             this.btnExtractSessionId.Name = "btnExtractSessionId";
             this.btnExtractSessionId.Size = new System.Drawing.Size(122, 23);
             this.btnExtractSessionId.TabIndex = 11;
@@ -223,12 +187,9 @@
             this.ClientSize = new System.Drawing.Size(1120, 687);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.btnExtractSessionId);
-            this.Controls.Add(this.btnToEvo);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnShowData);
-            this.Controls.Add(this.btnTableUpdate);
-            this.Controls.Add(this.btnGetLobbyInfo);
             this.Name = "fMain";
             this.Text = "BCR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fMain_FormClosing);
@@ -251,8 +212,6 @@
         #endregion
 
         private System.Windows.Forms.ListBox lstLog;
-        private System.Windows.Forms.Button btnGetLobbyInfo;
-        private System.Windows.Forms.Button btnTableUpdate;
         private System.Windows.Forms.TreeView tvData;
         private System.Windows.Forms.Button btnShowData;
         private System.Windows.Forms.Timer tMetricPing;
@@ -260,7 +219,6 @@
         private CefSharp.WinForms.ChromiumWebBrowser cBrowser;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnToEvo;
         private System.Windows.Forms.Button btnExtractSessionId;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusMain;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusEvoSessionId;

@@ -7,6 +7,6 @@ namespace business.DAL
 {
     public class Config
     {
-        public static readonly string DataPath = Directory.GetCurrentDirectory() + @"\App_Data\bcr.db";
+        public static readonly string DataPath = @"D:\Dbs\bcr.db";
     }
 }

@@ -26,7 +26,7 @@ namespace business
         {
             string sessionId = "";
             var evoFrame = GetEvoFrame();
-            if(evoFrame!=null)
+            if(evoFrame!=null && !string.IsNullOrEmpty(evoFrame.Url))
             {
                 var evoUri = new Uri(evoFrame.Url);
                 sessionId = HttpUtility.ParseQueryString(evoUri.Fragment).Get("EVOSESSIONID");
@@ -103,8 +103,12 @@ namespace business
         private IFrame GetEvoFrame()
         {
             var frmList = this._browser.GetBrowser().GetFrameIdentifiers();
-            var betFrame = this._browser.GetBrowser().GetFrame(frmList[1]);
-            return betFrame;
+            if (frmList.Count > 1)
+            {
+                var betFrame = this._browser.GetBrowser().GetFrame(frmList[1]);
+                return betFrame;
+            }
+            return null;
         }
 
         private void RunJavascript(string script)

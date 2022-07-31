@@ -29,24 +29,18 @@ namespace bcrwss.BrowserUtils
 
         public async Task<string> GetCasinoSessionIdAsync()
         {
-            string sessionId = "";
-            var cookieManager = Cef.GetGlobalCookieManager();
-
-            var cookies = await cookieManager.VisitUrlCookiesAsync("https://contapp8895.anastre.com/bamboo/", true);
-            foreach(var cc in cookies)
+            var fI = _browser.GetBrowser().GetFrameIdentifiers()[1];
+            var frm = _browser.GetBrowser().GetFrame(fI);
+            if (frm != null)
             {
-                if (cc.Name.ToLower().Contains("refreshtoken"))
-                {
-                    sessionId = cc.Value;
-                    break;
-                }
-                    
+                var lastUserToken = _browserHandler.GetAllSessionStorageVariables(frm)["lastUserToken"];
+                return lastUserToken;
             }
 
-            return sessionId;
+            return "";
         }
 
-        public async Task<string> GetWebSessionIdFromStorage()
+        public async Task<string> GetWebSessionIdFromStorageAsync()
         {
             var fI = _browser.GetBrowser().GetFrameIdentifiers()[1];
             var frm = _browser.GetBrowser().GetFrame(fI);

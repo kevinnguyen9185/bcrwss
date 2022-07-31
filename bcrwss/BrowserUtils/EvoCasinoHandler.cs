@@ -80,7 +80,7 @@ namespace bcrwss.BrowserUtils
             }
         }
 
-        public async Task<string> GetWebSessionIdFromStorage()
+        public async Task<string> GetWebSessionIdFromStorageAsync()
         {
             return "";
         }

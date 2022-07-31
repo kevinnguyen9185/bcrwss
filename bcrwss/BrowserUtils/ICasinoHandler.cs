@@ -17,6 +17,6 @@ namespace bcrwss.BrowserUtils
 
         void GoToTable(string tableId);
 
-        Task<string> GetWebSessionIdFromStorage();
+        Task<string> GetWebSessionIdFromStorageAsync();
     }
 }

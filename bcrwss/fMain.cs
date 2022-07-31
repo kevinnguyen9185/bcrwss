@@ -175,6 +175,7 @@ namespace bcrwss
 
         private async Task UpdateLobbyInfo()
         {
+            await Task.Delay(3000);
             await casinoActions.UpdateLobbyInfoAsync();
             //if (wsClient == null || !wsClient.IsRunning)
             //{
@@ -305,7 +306,7 @@ namespace bcrwss
         {
             await DoLoginAsync();
             await DoGoToEvoLobbyAsync();
-            UpdateLobbyInfo();
+            await UpdateLobbyInfo();
             UpdateTableInfo();
 
             tMetricPing.Start();
@@ -316,6 +317,11 @@ namespace bcrwss
         {
             evoSessionId = await casinoHandler.GetCasinoSessionIdAsync();
             uiInteraction.UpdateToolTipSessionId(evoSessionId);
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await casinoActions.UpdateLobbyInfoAsync();
         }
     }
 }

@@ -1,0 +1,60 @@
+{
+	"SequenceNumber": 0,
+	"Data": {
+		"LoginType": 0,
+		"ServerID": "17470",
+		"GameClientIP": "*",
+		"WebSessionID": "5766e207-ef31-4ec8-a220-2f5e47e822d8",
+		"ClientStyle": 7,
+		"DCKey": "tcc"
+	},
+	"MessageType": "getLoginWithUserToken",
+	"UserToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FjY291bnQvdjEiLCJleHAiOjE2NTkwNzU5MDksImNpZCI6IjE3NDcwIiwiZXh0IjoiMSIsIm91aWQiOiIweEI5OUUwMDk2Iiwic3ViIjoiZTZmNjBhOTI2NGY1NDEzMmIzMWZmYWYzMzg1ZmE4OWQiLCJjZXJ0IjoibWdzLnVzZXJzZXNzaW9udG9rZW4udGNjLjIwMjAwOTAzLjIwNDhiaXQiLCJpYXQiOiIxNjU5MDc0MTA5IiwiYXVkIjoiVXNlclNlc3Npb24ifQ.hGH5-S3Javd7L0fq0gF2y9P2Q1Es31C4-JuQtew9DLB0F67gfKU97b8h9JtZWk9AuH-p3kChCM4DPCFT6RsWf3ayXcYOdwE6zEzN-U-Uy-sQJqDJcpwYNtvOnLAjb8v_7oBT8dVhGoY-2Jb44lp6qDKv6T4ugEiPv1B9WQsqv9HRYU9gQw6W94XwnkxhGB5rxrKGi9ZHqTwli0stQ6M12g_h_mLGluTtEXBhHBBHEzFtvPzx9zMRatYoEZg4gNtlvZT80OfQhGLfeW3s4MKOdiJeQZx8oHK5yFq6oSmGcjeEOiKQrl8PGuicwSzgQznjUDTZgV5np4PHevIWFEze1A"
+}
+
+{
+	"MessageType": "getLoginReply",
+	"SequenceNumber": 0,
+	"Data": {
+		"IsSuccess": true,
+		"ReplyCode": 0,
+		"CompanyCode": "17470",
+		"BambooToken": "e333b930-abb3-4054-9807-f8673175b9d9",
+		"LogTicket": "",
+		"ServerID": 17470,
+		"JsonWebToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTk0MzQxMTMsInJvbGUiOiJwbGF5ZXIiLCJpc3MiOiJodHRwOi8vd3d3LndlYmFwaS5uZXQiLCJhdWQiOiJFOUZENENCRS0zOEFFLTRFQUUtODczOS03NTRGOEJFMDhCODAiLCJ1c2VyX2lkIjo5ODc3OTE4LCJjYXNpbm9faWQiOjE3NDcwfQ.E28AH9mJWfv2YXDljlrA-VqUKIng2CaP8T-RyhbdHfTzuYqIPTL5KAa15IFATmkarDT2mmbPrjP9J-Ad3aYS_01dA1FsgtT-cXs5SKISvSfHdeeNgRnVTQHXHxZ1d6ou0um1uhocyFwzzj_RxGlafJ3aI-mw1nHeoemYETIbXeiI3U0XM6-8a8azF4RxwZKQN8vtggPt6ZeCiKVn_Bxbldp81_Nlr0FNTLZpBUGibgBi8SbaQd_ZW0_nVvX-73WffXsOEh_i4FF1DAZwX05tqMKbFgSVH22rDA4-tLJRqfzfsmjmntQiEGsHL_XpMKbz4WV9y-5U2QWHbUGxoHKWsQ",
+		"CountryCode": "VNM",
+		"CurrencyCode": "VND",
+		"DisplayProfile": "All",
+		"UserName": null,
+		"MgsUserID": 9877918
+	}
+} 
+
+{
+	"MessageType": "setPlaceInstantBet",
+	"SequenceNumber": 1,
+	"Data": {
+		"RoundID": 666430,
+		"GameType": 6,
+		"TableCode": "Baccarat_E11_S2",
+		"RoomCode": 1,
+		"SeatIndex": -1,
+		"IsAutoBet": false,
+		"ViewType": 1,
+		"Platform": 5,
+		"BetAmount": [
+			"1000"
+		],
+		"PoolIndex": [
+			3
+		],
+		"VirtualTableCode": "NON_MP_LD_0_",
+		"PlayerMode": 0
+	},
+	"MetaData": {
+		"BettingMethod": "IG"
+	},
+	"BambooToken": "ca58d2f2-fbac-437a-9e98-bb9ceb84e43d",
+	"UserToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FjY291bnQvdjEiLCJleHAiOjE2NTkyMzY1NzUsImNpZCI6IjE3NDcwIiwiZXh0IjoiMSIsIm91aWQiOiIweEI5OUUwMDk2Iiwic3ViIjoiOTIyYjk5OGY1NGRjNGRlMDhkMjg3OGY2YWM4ZmVhMTkiLCJjZXJ0IjoibWdzLnVzZXJzZXNzaW9udG9rZW4udGNjLjIwMjAwOTAzLjIwNDhiaXQiLCJpYXQiOiIxNjU5MjM0Nzc1IiwiYXVkIjoiVXNlclNlc3Npb24ifQ.hqBbJ2_skfecsksDdqgm-FtgKLh4BbegWDEGPxVFnKjYDoOeBcBlivD-MgvoUlO45_p6LKLERVhGHCCQAUvktjvPAl5xefsdjFqAHUN1UifjDdcCawAWR6EJI-frPQX0gRJQzLGcLuwINJfMD_uzOy6Pxp9OeMRcT3zPNByMY8NCMVUhqiXaq8XZ0uNrqdUdQSwMY7vqb0h7emlcA2rSCPD9LZDGAw4Q_u6sUKhsen5B1VbGxGXqdGlUiLjXOw3VhLmu97OwUNSCP8c6Gj_3skhCVDPYF26-SMIgecorzlJeYIax-0Qa8jPfjY4xVC-C0Db7oRLjqtJZ47v17VSREw"
+}

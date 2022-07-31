@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bcrwss.Properties {
+namespace bcrwss {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace bcrwss.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class BaseResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal BaseResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace bcrwss.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("bcrwss.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("bcrwss.BaseResource", typeof(BaseResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,27 @@ namespace bcrwss.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///    &quot;SequenceNumber&quot;: 0,
+        ///    &quot;Data&quot;: {
+        ///        &quot;LoginType&quot;: 0,
+        ///        &quot;ServerID&quot;: &quot;17470&quot;,
+        ///        &quot;GameClientIP&quot;: &quot;*&quot;,
+        ///        &quot;WebSessionID&quot;: &quot;{webSessionId}&quot;,
+        ///        &quot;ClientStyle&quot;: 7,
+        ///        &quot;DCKey&quot;: &quot;tcc&quot;
+        ///    },
+        ///    &quot;MessageType&quot;: &quot;getLoginWithUserToken&quot;,
+        ///    &quot;UserToken&quot;: &quot;{0}&quot;
+        ///}.
+        /// </summary>
+        internal static string MG_WSS_Request_Login {
+            get {
+                return ResourceManager.GetString("MG_WSS_Request_Login", resourceCulture);
             }
         }
     }

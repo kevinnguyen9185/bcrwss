@@ -11,12 +11,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>bcrwss</RootNamespace>
     <AssemblyName>bcrwss</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -96,7 +97,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowserHandler.cs" />
+    <Compile Include="BrowserUtils\BrowserHandler.cs" />
+    <Compile Include="BrowserUtils\EvoCasinoHandler.cs" />
+    <Compile Include="BrowserUtils\ICasinoHandler.cs" />
+    <Compile Include="BrowserUtils\MGCasinoHandler.cs" />
+    <Compile Include="Communication\MGCasinoAction.cs" />
+    <Compile Include="Communication\EVOCasinoAction.cs" />
+    <Compile Include="Communication\ICansinoActions.cs" />
     <Compile Include="fMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +112,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BaseResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UIInteraction.cs" />
     <EmbeddedResource Include="fMain.resx">
       <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,7 +129,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="BaseResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BaseResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

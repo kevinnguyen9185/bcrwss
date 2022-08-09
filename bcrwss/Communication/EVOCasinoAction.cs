@@ -37,13 +37,18 @@ namespace bcrwss.Communication
         public async Task DoGoToCasinoLobbyAsync()
         {
             await _browser.LoadUrlAsync(Config.MGCcasinoUrl);
-            while (!_casinoHandler.IsCasinoBrowserReady())
+            while (!await _casinoHandler.IsCasinoBrowserReady())
             {
                 await Task.Delay(1000);
             }
             await Task.Delay(1500);
             var evoSessionId = await _casinoHandler.GetCasinoSessionIdAsync();
             _uiInteraction.UpdateToolTipSessionId(evoSessionId);
+        }
+
+        public Task StopWsAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task UpdateLobbyInfoAsync()

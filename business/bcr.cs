@@ -43,6 +43,10 @@ namespace business
             }
         }
 
+        /// <summary>
+        /// EVO specific
+        /// </summary>
+        /// <param name="road"></param>
         public void UpsertTableRoad(Input.BcrRoad.Road road)
         {
             if(road==null || string.IsNullOrEmpty(road.args.tableId))
@@ -100,6 +104,66 @@ namespace business
             }
         }
 
+        /// <summary>
+        /// MGC specific
+        /// </summary>
+        /// <param name="tableId">tableId</param>
+        /// <param name="result">result of each table</param>
+        public void UpsertTablesession(string tableId, string result, int roundCount)
+        {
+            using (var db = new LiteDatabase(Config.DataPath))
+            {
+                var bcrTableCollection = db.GetCollection<Entity.BcrTable>();
+                var tableInDb = bcrTableCollection.FindOne(r => r.TableId.ToLower() == tableId.ToLower());
+
+                if (tableInDb == null) return;
+
+                // Need to update
+                if (tableInDb.Sessions == null)
+                {
+                    tableInDb.Sessions = new List<Entity.RoadSession>();
+                }
+
+                if (roundCount == 1)
+                {
+                    // Create new session
+                    var newSession = new Entity.RoadSession
+                    {
+                        ResultString = result,
+                        Dts = DateTime.UtcNow,
+                        SessionId = Guid.NewGuid().ToString()
+                    };
+                    tableInDb.Sessions.Add(newSession);
+                    bcrTableCollection.Update(tableInDb);
+                }
+                else
+                {
+                    // Update to current session
+                    var latestSessionResultInDb = tableInDb.Sessions.Count > 0 ? tableInDb.Sessions[tableInDb.Sessions.Count - 1] : null;
+                    if (latestSessionResultInDb != null
+                        && !string.IsNullOrEmpty(latestSessionResultInDb.ResultString)
+                        && result.IndexOf(latestSessionResultInDb.ResultString) == 0)
+                    {
+                        latestSessionResultInDb.ResultString = result;
+                        bcrTableCollection.Update(tableInDb);
+                        return;
+                    }
+
+                    if (result.Length > 0)
+                    {
+                        var newSession = new Entity.RoadSession
+                        {
+                            ResultString = result,
+                            Dts = DateTime.UtcNow,
+                            SessionId = Guid.NewGuid().ToString()
+                        };
+                        tableInDb.Sessions.Add(newSession);
+                        bcrTableCollection.Update(tableInDb);
+                    }
+                }
+            }
+        }
+
         public List<Entity.BcrTable> GetBcrTableInfo()
         {
             using (var db = new LiteDatabase(Config.DataPath))
@@ -138,13 +202,6 @@ namespace business
             string result = "";
             foreach (var r in road.args.bigRoad)
             {
-                //if (r.ties > 0)
-                //{
-                //    for (int i = 0; i < r.ties; i++)
-                //    {
-                //        result += "T";
-                //    }
-                //}
                 if (r.color != null && r.color.ToLower() == "blue")
                 {
                     result += "P";

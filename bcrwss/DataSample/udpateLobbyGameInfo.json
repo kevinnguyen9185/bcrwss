@@ -1,0 +1,437 @@
+﻿{
+  "MessageType": "updateLobbyGameInfo",
+  "SlaveID": -1,
+  "Data": {
+    "Tables": [
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          48,
+          91
+        ],
+        "BankerCards": [
+          0,
+          26,
+          40
+        ],
+        "MetaDataType": 3,
+        "DealingTimePassed": 15424,
+        "Action": 7,
+        "CardPosition": [
+          1,
+          2
+        ],
+        "TableCode": "Baccarat_RD2_S2",
+        "RoundID": 526669,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_RD2_S2",
+        "RoundID": 526669,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          18,
+          80,
+          3
+        ],
+        "BankerCards": [
+          74,
+          80,
+          32
+        ],
+        "MetaDataType": 3,
+        "DealingTimePassed": 27552,
+        "Action": 4,
+        "CardPosition": [
+          1,
+          2
+        ],
+        "TableCode": "Baccarat_E11_S2",
+        "RoundID": 669872,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_E11_S2",
+        "RoundID": 669872,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 820902,
+          "RoundCount": 23,
+          "DurationPlaceBet": 20000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 18261,
+        "TableCode": "Baccarat_E7_S2",
+        "RoundID": 820902,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 3,
+        "UpdateData": {
+          "HighlightPoolIndexes": [
+            3,
+            5,
+            7,
+            22
+          ],
+          "IsVoidGame": false
+        },
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_E10_S2",
+        "RoundID": 689421,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          88,
+          9
+        ],
+        "BankerCards": [],
+        "MetaDataType": 0,
+        "DealingTimePassed": 4686,
+        "Action": 4,
+        "CardPosition": [
+          0,
+          1
+        ],
+        "TableCode": "Baccarat_E6_S2",
+        "RoundID": 799345,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_E6_S2",
+        "RoundID": 799345,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 320042,
+          "RoundCount": 6,
+          "DurationPlaceBet": 18000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 2000
+        },
+        "BetOrDecisionStateTimeLeft": 9223,
+        "TableCode": "Baccarat_VB1_S2",
+        "RoundID": 320042,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          26,
+          19
+        ],
+        "BankerCards": [
+          65,
+          27,
+          48
+        ],
+        "MetaDataType": 3,
+        "DealingTimePassed": 20694,
+        "Action": 4,
+        "CardPosition": [
+          1,
+          2
+        ],
+        "TableCode": "Baccarat_VB2_S2",
+        "RoundID": 320215,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_VB2_S2",
+        "RoundID": 320215,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 722052,
+          "RoundCount": 38,
+          "DurationPlaceBet": 20000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 5368,
+        "TableCode": "Baccarat_E12_S2",
+        "RoundID": 722052,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 491214,
+          "RoundCount": 20,
+          "DurationPlaceBet": 20000,
+          "DurationBalance": 25000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 2000
+        },
+        "BetOrDecisionStateTimeLeft": 6637,
+        "TableCode": "Baccarat_RD3_S2",
+        "RoundID": 491214,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Sicbo_E1_S2",
+        "RoundID": 717722,
+        "GameType": 29
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 971535,
+          "RoundCount": 2,
+          "DurationPlaceBet": 20000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 16860,
+        "TableCode": "Baccarat_E1_S2",
+        "RoundID": 971535,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 538890,
+          "RoundCount": 28,
+          "DurationPlaceBet": 20000,
+          "DurationBalance": 25000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 2000
+        },
+        "BetOrDecisionStateTimeLeft": 18052,
+        "TableCode": "Baccarat_RD1_S2",
+        "RoundID": 538890,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 3,
+        "UpdateData": {
+          "HighlightPoolIndexes": [
+            4,
+            6,
+            8,
+            22
+          ],
+          "IsVoidGame": false
+        },
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_VB3_S2",
+        "RoundID": 317677,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          99,
+          11
+        ],
+        "BankerCards": [],
+        "MetaDataType": 0,
+        "DealingTimePassed": 3831,
+        "Action": 4,
+        "CardPosition": [
+          0,
+          1
+        ],
+        "TableCode": "Baccarat_E8_S2",
+        "RoundID": 757314,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_E8_S2",
+        "RoundID": 757314,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          2,
+          91,
+          27
+        ],
+        "BankerCards": [
+          81,
+          90,
+          25
+        ],
+        "MetaDataType": 3,
+        "DealingTimePassed": 21700,
+        "Action": 4,
+        "CardPosition": [
+          1,
+          2
+        ],
+        "TableCode": "Baccarat_VB5_S2",
+        "RoundID": 194816,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_VB5_S2",
+        "RoundID": 194816,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_PC4_S2",
+        "RoundID": 798444,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 792967,
+          "RoundCount": 15,
+          "DurationPlaceBet": 14000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 8918,
+        "TableCode": "Baccarat_PC2_S2",
+        "RoundID": 792967,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_E2_S2",
+        "RoundID": 1029819,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_VB4_S2",
+        "RoundID": 195507,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 851649,
+          "RoundCount": 60,
+          "DurationPlaceBet": 9000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 6012,
+        "TableCode": "Baccarat_PC1_S2",
+        "RoundID": 851649,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 100,
+        "PlayerCards": [
+          41,
+          34
+        ],
+        "BankerCards": [
+          27,
+          89
+        ],
+        "MetaDataType": 1,
+        "DealingTimePassed": 8993,
+        "Action": 4,
+        "CardPosition": [
+          1,
+          1
+        ],
+        "TableCode": "Baccarat_E5_S2",
+        "RoundID": 941049,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 2,
+        "BetOrDecisionStateTimeLeft": -1,
+        "TableCode": "Baccarat_E5_S2",
+        "RoundID": 941049,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 793631,
+          "RoundCount": 10,
+          "DurationPlaceBet": 14000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 8343,
+        "TableCode": "Baccarat_PC3_S2",
+        "RoundID": 793631,
+        "GameType": 6
+      },
+      {
+        "UpdateType": 1,
+        "GameState": 1,
+        "UpdateData": {
+          "RoundID": 1045735,
+          "RoundCount": 11,
+          "DurationPlaceBet": 20000,
+          "DurationBalance": 5000,
+          "DurationPreparation": 5000,
+          "AutoConfirmCounter": 0
+        },
+        "BetOrDecisionStateTimeLeft": 1642,
+        "TableCode": "Baccarat_E4_S2",
+        "RoundID": 1045735,
+        "GameType": 6
+      }
+    ]
+  }
+}

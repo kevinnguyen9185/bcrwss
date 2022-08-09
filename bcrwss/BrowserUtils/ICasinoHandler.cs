@@ -9,9 +9,7 @@ namespace bcrwss.BrowserUtils
 
         Task<string> GetCasinoSessionIdAsync();
 
-        bool IsBrowserReady();
-
-        bool IsCasinoBrowserReady();
+        Task<bool> IsCasinoBrowserReady();
 
         void RandomSwitchLayoutCasino();
 

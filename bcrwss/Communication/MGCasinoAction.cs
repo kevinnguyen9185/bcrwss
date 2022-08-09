@@ -36,7 +36,7 @@ namespace bcrwss.Communication
         public async Task DoGoToCasinoLobbyAsync()
         {
             await _browser.LoadUrlAsync(Config.MGCcasinoUrl);
-            while (!_casinoHandler.IsCasinoBrowserReady())
+            while (!await _casinoHandler.IsCasinoBrowserReady())
             {
                 await Task.Delay(1000);
             }
@@ -48,6 +48,11 @@ namespace bcrwss.Communication
 
         public async Task UpdateLobbyInfoAsync()
         {
+            if(wsClient != null)
+            {
+                wsClient.Dispose();
+            }
+
             var sessionWebId = await _casinoHandler.GetWebSessionIdFromStorageAsync();
             CookieSession = await _casinoHandler.GetCasinoSessionIdAsync();
 
@@ -77,58 +82,12 @@ namespace bcrwss.Communication
 
             if (wsClient != null)
             {
-                //wsClient.Send("{ 'id':'7gkhqb10bv','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'table','tables':[{ 'tableId':'leqhceumaq6qfoug'},{ 'tableId':'lv2kzclunt2qnxo5'},{ 'tableId':'ndgvwvgthfuaad3q'},{ 'tableId':'ndgvz5mlhfuaad6e'},{ 'tableId':'ndgv45bghfuaaebf'},{ 'tableId':'nmwde3fd7hvqhq43'},{ 'tableId':'nmwdzhbg7hvqh6a7'},{ 'tableId':'nxpj4wumgclak2lx'},{ 'tableId':'nxpkul2hgclallno'},{ 'tableId':'obj64qcnqfunjelj'},{ 'tableId':'ocye2ju2bsoyq6vv'},{ 'tableId':'ovu5cwp54ccmymck'},{ 'tableId':'ovu5dsly4ccmynil'},{ 'tableId':'ovu5eja74ccmyoiq'},{ 'tableId':'ovu5fbxm4ccmypmb'},{ 'tableId':'ovu5fzje4ccmyqnr'},{ 'tableId':'o4kyj7tgpwqqy4m4'},{ 'tableId':'LightningBac0001'},{ 'tableId':'ndgv76kehfuaaeec'},{ 'tableId':'ocye5hmxbsoyrcii'},{ 'tableId':'ovu5h6b3ujb4y53w'},{ 'tableId':'NoCommBac0000001'},{ 'tableId':'oytmvb9m1zysmc44'},{ 'tableId':'60i0lcfx5wkkv3sy'},{ 'tableId':'ndgvs3tqhfuaadyg'},{ 'tableId':'zixzea8nrf1675oh'},{ 'tableId':'k2oswnib7jjaaznw'},{ 'tableId':'SalPrivBac000001'},{ 'tableId':'n7ltqx5j25sr7xbe'},{ 'tableId':'ok37hvy3g7bofp4l'},{ 'tableId':'SalPrivBac000004'},{ 'tableId':'pctte34dt6bqbtps'},{ 'tableId':'SuperSicBo000001'},{ 'tableId':'DragonTiger00001'}]}],'unsubscribeTopics':[]} }");
-
-                //wsClient.Send("{ 'id':'adfadsfasd','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'lobby','orientation':'landscape','category':'baccarat_sicbo','table':'leqhceumaq6qfoug'}],'unsubscribeTopics':[]} }");
-
                 wsClient.Send(BaseResource.MG_WSS_Request_Login
                     .Replace("{0}", CookieSession)
                     .Replace("{webSessionId}", sessionWebId)
                     );
             }
         }
-
-        //public async Task UpdateLobbyInfoAsync()
-        //{
-        //    var sessionWebId = "a423b40d-e2d2-4729-a35d-89a6ac2a69b8";
-        //    CookieSession = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FjY291bnQvdjEiLCJleHAiOjE2NTkyODYzODAsImNpZCI6IjE3NDcwIiwiZXh0IjoiMSIsIm91aWQiOiIweEI5OUUwMDk2Iiwic3ViIjoiODY3NWM1NzdjZjhjNGIwODgyZjQ2Mjk2ZWRlNTYyMmQiLCJjZXJ0IjoibWdzLnVzZXJzZXNzaW9udG9rZW4udGNjLjIwMjAwOTAzLjIwNDhiaXQiLCJpYXQiOiIxNjU5Mjg0NTgwIiwiYXVkIjoiVXNlclNlc3Npb24ifQ.19ZdbpYz3d15LhiG7sky3OpxMgX_zBKL1fm_DB5IkOyJVXKCj34VwmK3Oe6pakNJ1qA8CxaMf8zsv5ef-6i98moNuoLDzf8qJT0wpolajco-2jH3vDjlf5ga8cH8a4GP7yTxqfmS6UL4FKOMtc-7zDZXS-zrZtqZFDyeEWtCx1iec74zWe8lTL7hY9VwN8d37hJ9EThlURFm8ZfzP-A9LTqCuhb1irI3mAVpsUD26igVPoztz5tx00s0DwYl9SZoYO3rmbyKEM_GpH5VZEvjEUZPSTqSqD_NiKPzKF6p0Krbtgy4_3I5EfUkJ4GzOaSOreibIp-WrZKWmMCWQJblMg";
-
-        //    if (wsClient == null || !wsClient.IsRunning)
-        //    {
-        //        var factory = new Func<ClientWebSocket>(() => new ClientWebSocket
-        //        {
-        //            Options =
-        //            {
-        //                KeepAliveInterval = TimeSpan.FromSeconds(5),
-        //                UseDefaultCredentials = true,
-        //            }
-        //        });
-
-        //        wsClient = new WebsocketClient(new Uri(_url), factory);
-        //        await wsClient.Start();
-        //        _uiInteraction.Log("Client started");
-
-        //        wsClient
-        //            .MessageReceived
-        //            .Where(msg => msg.Text != null)
-        //            .Where(msg => msg.Text.StartsWith("{"))
-        //            .Subscribe(obj => { OnWebsocketReceive(obj.Text); });
-
-        //        _uiInteraction.UpdateToolTipMain("Fetching");
-        //    }
-
-        //    if (wsClient != null)
-        //    {
-        //        //wsClient.Send("{ 'id':'7gkhqb10bv','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'table','tables':[{ 'tableId':'leqhceumaq6qfoug'},{ 'tableId':'lv2kzclunt2qnxo5'},{ 'tableId':'ndgvwvgthfuaad3q'},{ 'tableId':'ndgvz5mlhfuaad6e'},{ 'tableId':'ndgv45bghfuaaebf'},{ 'tableId':'nmwde3fd7hvqhq43'},{ 'tableId':'nmwdzhbg7hvqh6a7'},{ 'tableId':'nxpj4wumgclak2lx'},{ 'tableId':'nxpkul2hgclallno'},{ 'tableId':'obj64qcnqfunjelj'},{ 'tableId':'ocye2ju2bsoyq6vv'},{ 'tableId':'ovu5cwp54ccmymck'},{ 'tableId':'ovu5dsly4ccmynil'},{ 'tableId':'ovu5eja74ccmyoiq'},{ 'tableId':'ovu5fbxm4ccmypmb'},{ 'tableId':'ovu5fzje4ccmyqnr'},{ 'tableId':'o4kyj7tgpwqqy4m4'},{ 'tableId':'LightningBac0001'},{ 'tableId':'ndgv76kehfuaaeec'},{ 'tableId':'ocye5hmxbsoyrcii'},{ 'tableId':'ovu5h6b3ujb4y53w'},{ 'tableId':'NoCommBac0000001'},{ 'tableId':'oytmvb9m1zysmc44'},{ 'tableId':'60i0lcfx5wkkv3sy'},{ 'tableId':'ndgvs3tqhfuaadyg'},{ 'tableId':'zixzea8nrf1675oh'},{ 'tableId':'k2oswnib7jjaaznw'},{ 'tableId':'SalPrivBac000001'},{ 'tableId':'n7ltqx5j25sr7xbe'},{ 'tableId':'ok37hvy3g7bofp4l'},{ 'tableId':'SalPrivBac000004'},{ 'tableId':'pctte34dt6bqbtps'},{ 'tableId':'SuperSicBo000001'},{ 'tableId':'DragonTiger00001'}]}],'unsubscribeTopics':[]} }");
-
-        //        //wsClient.Send("{ 'id':'adfadsfasd','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'lobby','orientation':'landscape','category':'baccarat_sicbo','table':'leqhceumaq6qfoug'}],'unsubscribeTopics':[]} }");
-
-        //        wsClient.Send(BaseResource.MG_WSS_Request_Login
-        //            .Replace("{0}", CookieSession)
-        //            .Replace("{webSessionId}", sessionWebId)
-        //            );
-        //    }
-        //}
 
         private void OnWebsocketReceive(string json)
         {
@@ -146,24 +105,17 @@ namespace bcrwss.Communication
                         wsClient.Send("{ 'id':'adfadsfasd','type':'lobby.updateSubscriptions','args':{ 'subscribeTopics':[{ 'topic':'lobby','orientation':'landscape','category':'baccarat_sicbo','table':'leqhceumaq6qfoug'}],'unsubscribeTopics':[]} }");
                     }
                 }
-                if (json.IndexOf("lobby.tables") > -1)
+                if (json.IndexOf("updateLobbyInfo") > -1)
                 {
-                    var lobbInfo = JsonConvert.DeserializeObject<LobbyInfo>(json);
-
-                    if (lobbInfo != null)
+                    bcrTables = ExtractTableList(json);
+                    foreach (var tbl in bcrTables)
                     {
-                        bcrTables = lobbInfo.args.tables;
-                        foreach (var tbl in bcrTables)
-                        {
-                            bcrBusiness.UpsertTableMetadata(tbl);
-                        }
+                        bcrBusiness.UpsertTableMetadata(tbl, "MGC");
                     }
                 }
-                else if (json.IndexOf("lobby.baccaratRoadUpdated") > -1)
+                else if (json.IndexOf("updateTableInfo") > -1)
                 {
-                    _uiInteraction.Log(json);
-                    var bigRoad = JsonConvert.DeserializeObject<Road>(json);
-                    bcrBusiness.UpsertTableRoad(bigRoad);
+                    UpdateTableInfo(json);
                 }
                 else if (json.IndexOf("kickout") > -1)
                 {
@@ -187,6 +139,87 @@ namespace bcrwss.Communication
         {
             dynamic data = JsonConvert.DeserializeObject(json);
             return Convert.ToBoolean(data.Data.IsSuccess);
+        }
+
+        private List<Table> ExtractTableList(string json)
+        {
+            dynamic lobbyInfo = JsonConvert.DeserializeObject(json);
+
+            if (lobbyInfo == null) return null;
+
+            var tableList = lobbyInfo.Data.Tables;
+            var tables = new List<Table>();
+
+            foreach(var tbl in tableList)
+            {
+                var isOpen = Convert.ToBoolean(tbl.IsOpen);
+                if (!isOpen) continue;
+
+                var table = new Table
+                {
+                    name = tbl.TableCode,
+                    tableId = tbl.TableCode,
+                    gameType = tbl.GameType,
+                    tableType = tbl.TableType
+                };
+
+                tables.Add(table);
+            }
+
+            return tables;
+        }
+
+        private void UpdateTableInfo(string json)
+        {
+            dynamic tableInfo = JsonConvert.DeserializeObject(json);
+
+            if (tableInfo == null) return;
+
+            var tableList = tableInfo.Data.Tables;
+
+            foreach (var tbl in tableList)
+            {
+                if (tbl.UpdateType != 5) continue;
+                
+                var roundCount = Convert.ToInt32(tbl.RoundCount);
+                var historyList = tbl.GameStatus.History;
+                var result = ToResult(historyList);
+                var tableId = Convert.ToString(tbl.TableCode);
+
+                bcrBusiness.UpsertTablesession(tableId, result, roundCount);
+
+                _uiInteraction.Log($"Table : {tableId} result: {result} in round {roundCount}");
+            }
+        }
+
+        private string ToResult(dynamic history)
+        {
+            string result = "";
+            foreach(var h in history)
+            {
+                var value = Convert.ToInt32(h);
+                var tie = (value & 1) == 1 ? true : false;
+                var player = (value & 2) == 2 ? true : false;
+
+                if (tie) result += "T";
+                if (player)
+                {
+                    result += "P";
+                }
+                else
+                {
+                    result += "B";
+                }
+            }
+            return result;
+        }
+
+        public async Task StopWsAsync()
+        {
+            if (wsClient != null)
+            {
+                wsClient.Stop(WebSocketCloseStatus.NormalClosure, "");
+            }
         }
     }
 }

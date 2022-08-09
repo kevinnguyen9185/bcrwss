@@ -39,10 +39,8 @@
             this.toolStripStatusMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusEvoSessionId = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnExtractSessionId = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -73,7 +71,7 @@
             // 
             // btnShowData
             // 
-            this.btnShowData.Location = new System.Drawing.Point(251, 12);
+            this.btnShowData.Location = new System.Drawing.Point(123, 12);
             this.btnShowData.Name = "btnShowData";
             this.btnShowData.Size = new System.Drawing.Size(75, 23);
             this.btnShowData.TabIndex = 6;
@@ -88,7 +86,7 @@
             // 
             // tRefreshSession
             // 
-            this.tRefreshSession.Interval = 60000;
+            this.tRefreshSession.Interval = 5 * 60 * 1000;
             this.tRefreshSession.Tick += new System.EventHandler(this.tRefreshSession_Tick);
             // 
             // cBrowser
@@ -133,17 +131,6 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // btnExtractSessionId
-            // 
-            this.btnExtractSessionId.Enabled = false;
-            this.btnExtractSessionId.Location = new System.Drawing.Point(123, 12);
-            this.btnExtractSessionId.Name = "btnExtractSessionId";
-            this.btnExtractSessionId.Size = new System.Drawing.Size(122, 23);
-            this.btnExtractSessionId.TabIndex = 11;
-            this.btnExtractSessionId.Text = "Extract EVO session";
-            this.btnExtractSessionId.UseVisualStyleBackColor = true;
-            this.btnExtractSessionId.Click += new System.EventHandler(this.btnExtractSessionId_Click);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -181,24 +168,12 @@
             this.splitContainer2.SplitterDistance = 397;
             this.splitContainer2.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(332, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 687);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.btnExtractSessionId);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnShowData);
@@ -231,12 +206,10 @@
         private CefSharp.WinForms.ChromiumWebBrowser cBrowser;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnExtractSessionId;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusMain;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusEvoSessionId;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -11,5 +11,7 @@ namespace bcrwss.Communication
         Task DoGoToCasinoLobbyAsync();
 
         Task UpdateLobbyInfoAsync();
+
+        Task StopWsAsync();
     }
 }

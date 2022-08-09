@@ -65,9 +65,9 @@ namespace bcrwss.BrowserUtils
             return false;
         }
 
-        public bool IsCasinoBrowserReady()
+        public Task<bool> IsCasinoBrowserReady()
         {
-            return IsBrowserReady();
+            return Task.FromResult(IsBrowserReady());
         }
 
         public void RandomSwitchLayoutCasino()

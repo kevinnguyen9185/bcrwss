@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console_app", "..\console_a
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "desktop_analytics", "..\desktop_analytics\desktop_analytics.csproj", "{170027AC-2BC7-4B62-B924-6B342F4F8FDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "desktop_app_core", "..\desktop_app_core\desktop_app_core.csproj", "{EB41BE85-DBD4-44BB-9150-FACA0A1D36C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{170027AC-2BC7-4B62-B924-6B342F4F8FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170027AC-2BC7-4B62-B924-6B342F4F8FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{170027AC-2BC7-4B62-B924-6B342F4F8FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB41BE85-DBD4-44BB-9150-FACA0A1D36C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB41BE85-DBD4-44BB-9150-FACA0A1D36C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB41BE85-DBD4-44BB-9150-FACA0A1D36C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB41BE85-DBD4-44BB-9150-FACA0A1D36C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

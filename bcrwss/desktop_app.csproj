@@ -48,11 +48,14 @@
     <Reference Include="CefSharp.WinForms, Version=91.1.230.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>packages\CefSharp.WinForms.91.1.230\lib\net452\CefSharp.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="LiteDB, Version=5.0.11.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
-      <HintPath>packages\LiteDB.5.0.11\lib\net45\LiteDB.dll</HintPath>
+    <Reference Include="LiteDB, Version=5.0.12.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>packages\LiteDB.5.0.12\lib\net45\LiteDB.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>packages\Polly.7.2.3\lib\net472\Polly.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>packages\Serilog.2.10.0\lib\net46\Serilog.dll</HintPath>
@@ -135,7 +138,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DataSample\udpateLobbyGameInfo.json" />
     <None Include="DataSample\updateLobbyInfo.json" />
+    <None Include="DataSample\updateTableInfo.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

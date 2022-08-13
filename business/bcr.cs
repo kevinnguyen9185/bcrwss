@@ -111,6 +111,10 @@ namespace business
         /// <param name="result">result of each table</param>
         public void UpsertTablesession(string tableId, string result, int roundCount)
         {
+            if (result == "")
+            {
+                return;
+            }
             using (var db = new LiteDatabase(Config.DataPath))
             {
                 var bcrTableCollection = db.GetCollection<Entity.BcrTable>();

@@ -1,6 +1,7 @@
 ﻿using bcrwss.BrowserUtils;
 using bcrwss.Communication;
 using business.DAL;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace bcrwss
 {
     public partial class fMain : Form
     {
+        private readonly ILogger _logger;
         business.bcr bcrBusiness = new business.bcr();
         business.BrowserHandler bHandler;
         ICasinoHandler casinoHandler;
@@ -17,15 +19,16 @@ namespace bcrwss
         UIInteraction uiInteraction;
         ICansinoActions casinoActions;
 
-        public fMain()
+        public fMain(ILogger<fMain> logger)
         {
+            _logger = logger;
             InitializeComponent();
         }
 
         private void fMain_Load(object sender, EventArgs e)
         {
             bHandler = new business.BrowserHandler(this.cBrowser);
-            casinoHandler = new MGCasinoHandler(this.cBrowser);
+            casinoHandler = new MGCasinoHandler(this.cBrowser, _logger);
             this.tRefreshSession.Interval = RefreshInterval;
             uiInteraction = new UIInteraction(lstLog, toolStripStatusMain, toolStripStatusEvoSessionId, this);
             casinoActions = new MGCasinoAction(cBrowser, casinoHandler, uiInteraction);
@@ -67,6 +70,7 @@ namespace bcrwss
 
         private async void tRefreshSession_Tick(object sender, EventArgs e)
         {
+            _logger.Log(LogLevel.Information, "Session refreshed", null);
             await StartSessionWithoutLogin();
             tMetricPing.Stop();
             tMetricPing.Start();
@@ -91,8 +95,15 @@ namespace bcrwss
 
         private async Task UpdateLobbyInfo()
         {
-            await Task.Delay(3000);
-            await casinoActions.UpdateLobbyInfoAsync();
+            try
+            {
+                await Task.Delay(3000);
+                await casinoActions.UpdateLobbyInfoAsync();
+            }
+            catch(Exception ex)
+            {
+                _logger.Log(LogLevel.Error, ex.StackTrace, null);
+            }
         }
 
         private void StopCurrentSession()
@@ -103,6 +114,8 @@ namespace bcrwss
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            _logger.Log(LogLevel.Information, "Login", null);
+
             await DoLoginAsync();
             await DoGoToLobbyAsync();
             await UpdateLobbyInfo();

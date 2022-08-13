@@ -1,15 +1,12 @@
 ﻿using business;
-using CefSharp;
 using CefSharp.WinForms;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Polly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace bcrwss.BrowserUtils
 {
@@ -17,11 +14,13 @@ namespace bcrwss.BrowserUtils
     {
         private readonly ChromiumWebBrowser _browser;
         private readonly BrowserHandler _browserHandler;
+        private readonly ILogger _logger;
 
-        public MGCasinoHandler(ChromiumWebBrowser browser)
+        public MGCasinoHandler(ChromiumWebBrowser browser, ILogger logger)
         {
             _browser = browser;
             _browserHandler = new BrowserHandler(_browser);
+            _logger = logger;
         }
         public string GetCasinoFrameUrl()
         {
@@ -39,11 +38,20 @@ namespace bcrwss.BrowserUtils
                     });
             var result = await retry.ExecuteAsync<string>(async () =>
             {
-                var fI = _browser.GetBrowser().GetFrameIdentifiers()[1];
-                var frm = _browser.GetBrowser().GetFrame(fI);
-                if (frm != null)
+                var frameIds = _browser.GetBrowser().GetFrameIdentifiers();
+
+                foreach (var frId in frameIds)
                 {
-                    var lastUserToken = _browserHandler.GetAllSessionStorageVariables(frm)["lastUserToken"];
+                    var frm = _browser.GetBrowser().GetFrame(frId);
+                    var dict = _browserHandler.GetAllSessionStorageVariables(frm);
+                    _logger.LogInformation(dict.ToDebugString(), null);
+
+                    if (frm == null || !dict.ContainsKey("lastUserToken"))
+                    {
+                        continue;
+                    }
+
+                    var lastUserToken = dict["lastUserToken"];
                     return lastUserToken;
                 }
                 return "";
@@ -60,6 +68,7 @@ namespace bcrwss.BrowserUtils
                     {
                         Console.WriteLine("Retry");
                     });
+
             var result = await retry.ExecuteAsync<string>(async () =>
             {
                 var frameIds = _browser.GetBrowser().GetFrameIdentifiers();
@@ -67,16 +76,22 @@ namespace bcrwss.BrowserUtils
                 {
                     return "";
                 }
-                var fI = frameIds[1];
-                var frm = _browser.GetBrowser().GetFrame(fI);
-                if (frm != null)
+                foreach (var frId in frameIds)
                 {
-                    var landingParameter = _browserHandler.GetAllSessionStorageVariables(frm)["landingParameter"];
+                    var frm = _browser.GetBrowser().GetFrame(frId);
+                    var dict = _browserHandler.GetAllSessionStorageVariables(frm);
+                    _logger.LogInformation(dict.ToDebugString(), null);
+
+                    if (frm == null || !dict.ContainsKey("landingParameter"))
+                    {
+                        continue;
+                    }
+
+                    var landingParameter = dict["landingParameter"];
                     dynamic data = JsonConvert.DeserializeObject(landingParameter);
                     var webSessionId = data.SessionJWT;
                     return webSessionId;
                 }
-
                 return "";
             });
             return result;
@@ -116,6 +131,14 @@ namespace bcrwss.BrowserUtils
         public void RandomSwitchLayoutCasino()
         {
             //throw new NotImplementedException();
+        }
+    }
+
+    public static class Utils
+    {
+        public static string ToDebugString<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        {
+            return "{" + string.Join(",", dictionary.Select(kv => kv.Key + "=" + kv.Value).ToArray()) + "}";
         }
     }
 }

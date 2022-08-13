@@ -41,8 +41,6 @@ namespace bcrwss.Communication
                 await Task.Delay(1000);
             }
             await Task.Delay(1500);
-            //CookieSession = await _casinoHandler.GetCasinoSessionIdAsync();
-
             _uiInteraction.UpdateToolTipSessionId(CookieSession);
         }
 
@@ -162,7 +160,6 @@ namespace bcrwss.Communication
                     gameType = tbl.GameType,
                     tableType = tbl.TableType
                 };
-
                 tables.Add(table);
             }
 
